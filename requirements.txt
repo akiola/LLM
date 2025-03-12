@@ -1,0 +1,10 @@
+flask
+requests
+gunicorn
+python-dotenv
+pytest
+pytest-cov
+requests-mock
+pylint
+openai
+dotenv

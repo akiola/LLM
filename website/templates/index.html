@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Recipe Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+
+</head>
+<body>
+
+
+    <div class="container mt-5">
+        <h1 class="app-title">Recipe Generator</h1>
+        <p class="app-subtitle">Select the ingredients available in your fridge, and we'll generate a delicious recipe for you!</p>
+        
+        <form id="ingredientForm">
+            <div class="accordion" id="ingredientAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingDairy">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDairy">
+                            Dairy & Eggs
+                        </button>
+                    </h2>
+                    <div id="collapseDairy" class="accordion-collapse collapse show" aria-labelledby="headingDairy">
+                        <div class="accordion-body">
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="milk" name="ingredients" value="Milk"><label class="form-check-label" for="milk">Milk</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="eggs" name="ingredients" value="Eggs"><label class="form-check-label" for="eggs">Eggs</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="cheese" name="ingredients" value="Cheese"><label class="form-check-label" for="cheese">Cheese</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="butter" name="ingredients" value="Butter"><label class="form-check-label" for="butter">Butter</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingProduce">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProduce">
+                            Produce
+                        </button>
+                    </h2>
+                    <div id="collapseProduce" class="accordion-collapse collapse" aria-labelledby="headingProduce">
+                        <div class="accordion-body">
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="apples" name="ingredients" value="Apples"><label class="form-check-label" for="apples">Apples</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="oranges" name="ingredients" value="Oranges"><label class="form-check-label" for="oranges">Oranges</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="bananas" name="ingredients" value="Bananas"><label class="form-check-label" for="bananas">Bananas</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="berries" name="ingredients" value="Berries"><label class="form-check-label" for="berries">Berries</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="lettuce" name="ingredients" value="Lettuce"><label class="form-check-label" for="lettuce">Lettuce</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="carrots" name="ingredients" value="Carrots"><label class="form-check-label" for="carrots">Carrots</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="celery" name="ingredients" value="Celery"><label class="form-check-label" for="celery">Celery</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="peppers" name="ingredients" value="Peppers"><label class="form-check-label" for="peppers">Peppers</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingLeftovers">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLeftovers">
+                            Leftovers & Cooked Foods
+                        </button>
+                    </h2>
+                    <div id="collapseLeftovers" class="accordion-collapse collapse" aria-labelledby="headingLeftovers">
+                        <div class="accordion-body">
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="leftovers" name="ingredients" value="Leftovers"><label class="form-check-label" for="leftovers">Leftovers</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="chicken" name="ingredients" value="Chicken"><label class="form-check-label" for="chicken">Chicken</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="fish" name="ingredients" value="Fish"><label class="form-check-label" for="fish">Fish</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingCondiments">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCondiments">
+                            Condiments & Sauces
+                        </button>
+                    </h2>
+                    <div id="collapseCondiments" class="accordion-collapse collapse" aria-labelledby="headingCondiments">
+                        <div class="accordion-body">
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="ketchup" name="ingredients" value="Ketchup"><label class="form-check-label" for="ketchup">Ketchup</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="mustard" name="ingredients" value="Mustard"><label class="form-check-label" for="mustard">Mustard</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="mayonnaise" name="ingredients" value="Mayonnaise"><label class="form-check-label" for="mayonnaise">Mayonnaise</label></div>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="jelly/jam" name="ingredients" value="Jelly"><label class="form-check-label" for="jelly/jam">Jelly/Jam</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <label for="extraIngredient" class="form-label">Add Extra Ingredients:</label>
+                    <div class="input-group">
+                        <input type="text" id="extraIngredient" class="form-control" placeholder="Enter an ingredient">
+                        <button type="button" class="btn btn-success" onclick="addExtraIngredient()">+</button>
+                    </div>
+                    <ul id="extraIngredientsList" class="list-group mt-2"></ul>
+                </div>
+
+                <button type="button" class="btn btn-primary w-100 mt-3" onclick="getRecipes()">Generate Recipe</button>
+        </div>
+
+        </form>
+
+        <h2 class="mt-4">Sample Recipes for Your Ingredients:</h2>
+        <div id="recipeResults" class="row"></div>
+        
+        <div id="loadingIndicator" class="loader" style="display: none;">
+            <img src="{{ url_for('static', filename='hamburger.jpg') }}" alt="Loading...">
+        </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+
+        let extraIngredients = [];
+
+        function addExtraIngredient() {
+            let inputField = document.getElementById("extraIngredient");
+            let ingredient = inputField.value.trim();
+
+            if (ingredient !== "") {
+                extraIngredients.push(ingredient);
+                
+                let list = document.getElementById("extraIngredientsList");
+                let listItem = document.createElement("li");
+                listItem.className = "list-group-item d-flex justify-content-between align-items-center";
+                listItem.innerHTML = `${ingredient} <button class="btn btn-sm btn-danger" onclick="removeExtraIngredient('${ingredient}')">x</button>`;
+                list.appendChild(listItem);
+
+                inputField.value = ""; 
+            }
+        }
+
+        function removeExtraIngredient(ingredient) {
+            extraIngredients = extraIngredients.filter(item => item !== ingredient);
+            let list = document.getElementById("extraIngredientsList");
+            list.innerHTML = ""; 
+            extraIngredients.forEach(item => {
+                let listItem = document.createElement("li");
+                listItem.className = "list-group-item d-flex justify-content-between align-items-center";
+                listItem.innerHTML = `${item} <button class="btn btn-sm btn-danger" onclick="removeExtraIngredient('${item}')">x</button>`;
+                list.appendChild(listItem);
+            });
+        } 
+
+        async function getRecipes() {
+            let selectedIngredients = [];
+            document.querySelectorAll("input[name='ingredients']:checked").forEach(checkbox => {
+                selectedIngredients.push(checkbox.value);
+            });
+
+            selectedIngredients = [...selectedIngredients, ...extraIngredients];
+
+            if (selectedIngredients.length === 0) {
+                alert("Please select at least one ingredient!");
+                return;
+            }
+
+            
+            document.getElementById("recipeResults").innerHTML = "";
+            document.getElementById("loadingIndicator").style.display = "flex"
+
+            // Fetch recipes from Flask backend
+            const response = await fetch("/generate-recipe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ ingredients: selectedIngredients.join(", ") })
+            });
+
+            const data = await response.json();
+            document.getElementById("loadingIndicator").style.display = "none";
+
+            let resultContainer = document.getElementById("recipeResults");
+            resultContainer.innerHTML = ""; // Clear previous results
+
+            if (data.recipes && data.images) {
+                for (let i = 0; i < data.recipes.length; i++) {
+                    let recipeText = data.recipes[i];
+                    let recipeTitle = recipeText.split('\n')[0] || 'Recipe ' + (i + 1);
+                    let imageUrl = data.images[i] || "https://via.placeholder.com/300";
+    
+                    let recipeHtml = `
+                        <div class="col-md-4">
+                            <div class="card recipe-card">
+                                <img src="${imageUrl}" class="card-img-top" alt="Recipe Image">
+                                <div class="recipe-card-body">
+                                    <h5 class="recipe-card-title">${recipeTitle}</h5>
+                                    <p class="recipe-card-text">${recipeText.replace(/\n/g, "<br>")}</p>
+                                    <button class="download-btn mt-2" onclick="downloadRecipe('${recipeTitle}', \`${recipeText}\`)">Download Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    resultContainer.innerHTML += recipeHtml;
+                }
+            } else {
+                resultContainer.innerHTML = "<p class='text-danger'>Error generating recipes.</p>";
+            }
+        }
+
+        function downloadRecipe(title, content) {
+            const { jsPDF } = window.jspdf;
+            let doc = new jsPDF();
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(16);
+            doc.text(title, 10, 20);
+            doc.setFont("timesnewroman", "normal");
+            doc.setFontSize(12);
+            doc.text(content, 10, 30, { maxWidth: 180 });
+            doc.save(`${title}.pdf`);
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

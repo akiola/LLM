@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - YouTube Video Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Results</h1>
+        
+        <div class="video-container">
+            <h2>{{ video_title }}</h2>
+            <iframe 
+                width="560" 
+                height="315" 
+                src="https://www.youtube.com/embed/{{ video_id }}" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+
+        <div class="results-container">
+            <div class="summary-section">
+                <h3>Summary</h3>
+                <div class="content-box">
+                    {{ summary }}
+                </div>
+                <button id="copy-summary" class="btn">📋 Copy Summary</button>
+            </div>
+
+            <div class="transcript-section">
+                <h3>Transcript</h3>
+                <div class="content-box scrollable">
+                    {{ transcript }}
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <a href="{{ url_for('main.index') }}" class="btn primary">🔍 Analyze Another Video</a>
+            <a href="{{ url_for('main.download_transcript', video_id=video_id) }}" class="btn secondary">⬇️ Download Transcript</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 YouTube Video Analyzer</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function copyToClipboard(selector, message) {
+                const text = document.querySelector(selector).innerText;
+                navigator.clipboard.writeText(text).then(function() {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tooltip';
+                    tooltip.innerText = message;
+                    document.body.appendChild(tooltip);
+                    setTimeout(() => tooltip.remove(), 2000);
+                });
+            }
+
+            document.getElementById('copy-summary').addEventListener('click', function() {
+                copyToClipboard('.summary-section .content-box', 'Summary copied!');
+            });
+        });
+    </script>
+</body>
+</html>
